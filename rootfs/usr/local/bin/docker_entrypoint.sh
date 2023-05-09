@@ -9,23 +9,38 @@ chown -R transmission:transmission /config
 if
     [ ! -e "/config/settings.json" ]
 then
-    echo "{" >> /config/settings.json
-    echo "  \"bind-address-ipv4\": \"0.0.0.0\"," >> /config/settings.json
-    echo "  \"bind-address-ipv6\": \"::\"," >> /config/settings.json
-    echo "  \"blocklist-enabled\": false," >> /config/settings.json
-    echo "  \"message-level\": 2," >> /config/settings.json
-    echo "  \"rpc-authentication-required\": false," >> /config/settings.json
-    echo "  \"rpc-bind-address\": \"0.0.0.0\"," >> /config/settings.json
-    echo "  \"rpc-enabled\": true" >> /config/settings.json
-    echo "}" >> /config/settings.json
+    cat <<'EOF' > /config/settings.json
+    {
+    "bind-address-ipv4": "0.0.0.0",
+    "bind-address-ipv6": "::",
+    "blocklist-enabled": false,
+    "download-dir": "/downloads/complete",
+    "incomplete-dir": "/downloads/incomplete",
+    "incomplete-dir-enabled": true,
+    "message-level": 2,
+    "pidfile": "/config/transmission.pid",
+    "rename-partial-files": true,
+    "rpc-authentication-required": false,
+    "rpc-bind-address": "0.0.0.0",
+    "rpc-enabled": true,
+    "rpc-host-whitelist": "",
+    "rpc-host-whitelist-enabled": true,
+    "rpc-port": 9091,
+    "rpc-whitelist": "127.0.0.1,::1",
+    "rpc-whitelist-enabled": true,
+    "watch-dir-enabled": false
+    }
 fi
 
-# Delete PID if it exists
+# Delete pre-existing PID
 if
     [ -e "/config/transmission.pid" ]
 then
     rm -f /config/transmission.pid
 fi
+
+# Override location of curl SSL certificates
+export CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
 #=========================================================================================
 
