@@ -26,7 +26,7 @@ RUN \
     apt-get update && \
 
     # Install transmission-client
-    apt-get install -y --no-install-recommends \
+    apt-get install -y --no-install-recommends -o "Dpkg::Options::=--force-confold" \
         transmission-cli \
         transmission-daemon && \
 
