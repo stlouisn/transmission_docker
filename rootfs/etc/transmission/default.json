@@ -14,7 +14,7 @@
 "rpc-host-whitelist": "",
 "rpc-host-whitelist-enabled": true,
 "rpc-port": 9091,
-"rpc-whitelist": "127.0.0.1,::1",
+"rpc-whitelist": "127.0.0.1,192.168.*.*,172.16.*.*",
 "rpc-whitelist-enabled": true,
 "watch-dir-enabled": false
 }
