@@ -9,7 +9,7 @@ chown -R transmission:transmission /config
 if
     [ ! -e "/config/settings.json" ]
 then
-    cp /etc/transmission/default.json /config/settings.json
+    cp /etc/transmission-daemon/settings.json /config/settings.json
 fi
 
 # Delete pre-existing PID
