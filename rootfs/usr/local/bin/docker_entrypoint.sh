@@ -30,6 +30,7 @@ then
     "rpc-whitelist-enabled": true,
     "watch-dir-enabled": false
     }
+    EOF
 fi
 
 # Delete pre-existing PID
