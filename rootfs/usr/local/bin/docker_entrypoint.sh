@@ -29,7 +29,4 @@ exec gosu transmission \
     /usr/bin/transmission-daemon \
     --config-dir /config \
     --pid-file /config/transmission.pid \
-    --no-watch-dir \
-    --incomplete-dir /downloads/incomplete \
-    --download-dir /downloads/complete \
     --foreground
